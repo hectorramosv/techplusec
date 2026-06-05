@@ -1,0 +1,448 @@
+/* ==========================================================================
+   1. CONFIGURACIÓN GLOBAL & NUEVA ESTÉTICA DARK PREMIUM
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html, body, #root {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Fondo azul noche ultra profundo con degradado sutil */
+  background: linear-gradient(135deg, #070b12 0%, #0d131f 50%, #090d15 100%);
+  background-attachment: fixed;
+  color: #ffffff;
+}
+
+.app-viewport-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .app-viewport-container {
+    padding: 0 20px;
+  }
+}
+
+/* ==========================================================================
+   2. BARRA DE NAVEGACIÓN ESTILO SAAS (SIEMPRE HORIZONTAL)
+   ========================================================================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+  width: 100%;
+  position: relative;
+  z-index: 100;
+}
+
+.navbar-logo {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+}
+
+/* Menú de navegación principal */
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 35px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  padding: 10px 30px;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subimos un poco la opacidad para que brille más */
+  
+  /* Efecto de brillo en el borde (exterior e interior) */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1), 
+              inset 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+/* Opciones individuales del menú (enlaces/items) */
+.navbar-menu li a {
+  color: rgba(255, 255, 255, 0.7); /* Color base un poco apagado */
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease; /* Transición suave para el cambio */
+}
+
+/* Efecto al pasar el mouse por encima de una opción */
+.navbar-menu li a:hover {
+  color: #fff; /* Se vuelve completamente blanco */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); /* Brillo de texto (Glow effect) */
+}
+
+.navbar-menu a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navbar-menu a:hover {
+  color: #ffffff;
+}
+
+.navbar-cta {
+  /* Azul ciber adaptado al modo oscuro */
+  background: #58a6ff !important;
+  color: #070b12 !important;
+  padding: 8px 20px !important;
+  border-radius: 20px !important;
+  font-weight: 600 !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.navbar-cta:hover {
+  opacity: 0.9 !important;
+}
+
+/* Forzamos la desactivación absoluta de cualquier botón de menú */
+.navbar-toggle {
+  display: none !important;
+}
+
+/* ==========================================================================
+   3. SECCIÓN HERO EN DOS COLUMNAS
+   ========================================================================== */
+.hero {
+  padding: 40px 0 60px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; 
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px; 
+}
+
+.hero-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  text-align: left;
+}
+
+.hero-content h1 {
+  font-size: clamp(36px, 4.5vw, 54px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.hero-content p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 480px; 
+}
+
+.hero-btn {
+  padding: 14px 35px;
+  /* Botón con estilo Outline moderno */
+  border: 2px solid #58a6ff;
+  border-radius: 50px;
+  background: transparent;
+  color: #58a6ff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(88, 166, 255, 0.1);
+  transition: all 0.3s ease;
+  white-space: nowrap; 
+}
+
+.hero-btn:hover {
+  background: #58a6ff;
+  color: #070b12;
+  transform: translateY(-3px);
+  box-shadow: 0 18px 35px rgba(88, 166, 255, 0.3);
+}
+
+.hero-image-side {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image-side img {
+  width: 100%;
+  max-width: 540px; 
+  height: auto;
+  animation: floatSaaS 4.5s ease-in-out infinite;
+  filter: drop-shadow(0 20px 35px rgba(255, 255, 255, 0.5));
+}
+
+@keyframes floatSaaS {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ==========================================================================
+   4. BLOQUE DE TARJETAS DE SERVICIOS (CONSERVANDO TUS 4 COLORES)
+   ========================================================================= */
+.services {
+  padding: 40px 0 100px 0;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  width: 100%;
+}
+
+.custom-card {
+  border-radius: 20px;
+  padding: 35px 30px;
+  /* Fondo unificado oscuro para un look integrado */
+  background: #111724;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Aplicación de tus 4 colores en bordes y efectos de resplandor neón */
+.card-dark { 
+  border: 2px solid #0b3954; 
+    /* Sombra inicial (ejemplo: gris suave) */
+  box-shadow: 0 0 10px rgb(255, 255, 255); 
+  /* Hace que el cambio de sombra sea suave (dura 0.3 segundos) */
+  transition: box-shadow 0.3s ease;
+}
+.card-dark h3 { color: #58a6ff; }
+.card-dark:hover { box-shadow: 0 0 25px rgba(50, 144, 198, 0.6); }
+
+
+/*
+.card-orange { 
+  border: 2px solid #ff9f1c;
+  }*/
+.card-orange { 
+  border: 2px solid #ff9f1c;
+  /* Sombra inicial (ejemplo: gris suave) */
+  box-shadow: 0 0 10px rgb(255, 255, 255); 
+  /* Hace que el cambio de sombra sea suave (dura 0.3 segundos) */
+  transition: box-shadow 0.3s ease; 
+}
+  .card-orange h3 { color: #ff9f1c; }
+.card-orange:hover { box-shadow: 0 0 25px rgba(255, 159, 28, 0.6); }
+
+.card-teal { 
+  border: 2px solid #2ec4b6;
+    /* Sombra inicial (ejemplo: gris suave) */
+  box-shadow: 0 0 10px rgb(255, 255, 255); 
+  /* Hace que el cambio de sombra sea suave (dura 0.3 segundos) */
+  transition: box-shadow 0.3s ease; 
+}
+.card-teal h3 { color: #2ec4b6; }
+.card-teal:hover { box-shadow: 0 0 25px rgba(46, 196, 182, 0.6); }
+
+.card-purple { 
+  border: 2px solid #7022e4; 
+    /* Sombra inicial (ejemplo: gris suave) */
+  box-shadow: 0 0 10px rgb(255, 255, 255); 
+  /* Hace que el cambio de sombra sea suave (dura 0.3 segundos) */
+  transition: box-shadow 0.3s ease;
+}
+.card-purple h3 { color: #b78eff; }
+.card-purple:hover { box-shadow: 0 0 25px rgba(112, 34, 228, 0.6); }
+
+.card-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Colores de los iconos según su tarjeta */
+.card-dark .card-icon-wrapper { color: #58a6ff; }
+.card-orange .card-icon-wrapper { color: #ff9f1c; }
+.card-teal .card-icon-wrapper { color: #2ec4b6; }
+.card-purple .card-icon-wrapper { color: #b78eff; }
+
+.custom-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.custom-card p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ==========================================================================
+   5. MODAL DE DETALLES PREMIUM (DISEÑO INTEGRADO)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(7, 11, 18, 0.7);
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal-content-view {
+  background: #111724;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  max-width: 600px;
+  border-radius: 28px;
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+.close-modal-x {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.2s ease;
+}
+
+.close-modal-x:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE AJUSTES (ADAPTACIÓN HORIZONTAL PERMANENTE)
+   ========================================================================== */
+@media (max-width: 990px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 0;
+  }
+
+ .navbar-menu {
+  display: flex !important;
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px) !important;
+  flex-direction: row !important; 
+  gap: 15px !important;
+  padding: 8px 20px !important;
+  transform: none !important;
+  opacity: 1 !important;
+  border-radius: 40px; /* Mantiene la forma redondeada estética */
+  
+  /* Incrementamos ligeramente la opacidad del borde para notar el brillo */
+  border: 1px solid rgba(255, 255, 255, 0.2) !important; 
+  
+  /* Se añade el efecto de brillo exterior e interior en el borde */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.12), 
+              inset 0 0 15px rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Efecto de resaltado para los enlaces dentro del menú móvil */
+.navbar-menu li a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Brillo neón en el texto al pasar el dedo o cursor */
+.navbar-menu li a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+
+  .navbar-menu a {
+    font-size: 13px !important;
+  }
+
+  .navbar-cta {
+    padding: 6px 14px !important;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr; 
+    text-align: center;
+    gap: 35px;
+  }
+
+  .hero-content {
+    align-items: center; 
+    text-align: center;
+  }
+
+  .hero-content p {
+    margin: 0 auto 25px auto;
+  }
+
+  .hero-image-side img {
+    max-width: 300px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-menu {
+    gap: 10px !important;
+    padding: 8px 12px !important;
+  }
+  
+  .navbar-menu a {
+    font-size: 12px !important;
+  }
+}
